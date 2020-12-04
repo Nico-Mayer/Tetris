@@ -1,36 +1,35 @@
 package ui;
 
+import infrastructure.Main;
 import io.KeyHandler;
 
 import javax.swing.*;
 
-public class Gui {
-    private JFrame jf;
-    private DrawGame drawGame;
-    private DrawInterface drawInterface;
+public class Gui extends JFrame{
+    int guiWidth;
+    int guiHeight;
+    DrawGame game;
+    DrawInterface drawInterface;
 
-    public void create(){
-        jf = new JFrame("Tetris");
-        jf.setSize(DrawGame.gameWidth + 17 + 200, DrawGame.gameHeight + 41);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setLocationRelativeTo(null);
-        jf.setResizable(false);
-        jf.setLayout(null);
-        jf.addKeyListener(new KeyHandler());
-        jf.requestFocus();
+    public Gui(int x, int y) {
+        this.guiWidth = x;
+        this.guiHeight = y;
+        this.addKeyListener(new KeyHandler());
+        this.game = new DrawGame();
+        this.drawInterface = new DrawInterface();
+        this.add(game);
+        this.add(drawInterface);
 
-        drawInterface = new DrawInterface();
-        setupDraw(drawInterface, DrawGame.gameWidth +1 ,1, DrawGame.gameWidth , DrawGame.gameHeight);
-        drawGame = new DrawGame();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setLayout(null);
+        this.setVisible(true);
+        this.setSize(this.guiWidth, this.guiHeight);
 
-        setupDraw(drawGame,0,0, DrawGame.gameWidth , DrawGame.gameHeight);
-
-        jf.setVisible(true);
     }
 
-    private void setupDraw(JLabel draw, int x, int y, int width, int height){
-        draw.setBounds(x,y,width,height);
-        draw.setVisible(true);
-        jf.add(draw);
+    public void refresh() {
+        this.game.repaint();
+        this.drawInterface.repaint();
     }
 }

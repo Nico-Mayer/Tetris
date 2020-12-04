@@ -1,29 +1,43 @@
 package ui;
 
+import game.Block;
+import game.Game;
+import infrastructure.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class DrawGame extends JLabel {
-    // Game width and Hight in Blocks
-    private static final int HEIGHT = 18;
-    private static final int WIDTH = 10;
-    public static final int BLOCK_SIZE = 32;
-    public static int gameWidth = WIDTH * DrawGame.BLOCK_SIZE;
-    public static int gameHeight = HEIGHT * DrawGame.BLOCK_SIZE;
+public class DrawGame extends JPanel {
+
+    public DrawGame() {
+        this.setSize(Main.gameWidth, Main.gameHeight);
+        this.setBounds(20,20, Main.gameWidth, Main.gameHeight);
+    }
 
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(Game.currentBlock.getColor());
+        Game.currentBlock.drawBlock(g);
 
-        for (int x = 0; x < WIDTH ; x++) {
-            for (int y = 0; y < HEIGHT ; y++) {
-                g.drawRect(x * BLOCK_SIZE, y *BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE );
+        drawGridLines(g);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        repaint();
+    }
+
+    private void drawGridLines(Graphics g){
+        g.setColor(Color.LIGHT_GRAY);
+        for (int x = 0; x < Main.COLUMS ; x++) {
+            for (int y = 0; y < Main.ROWS ; y++) {
+                g.drawRect(x * Main.CELL_SIZE, y * Main.CELL_SIZE, Main.CELL_SIZE, Main.CELL_SIZE );
             }
         }
         g.setColor(Color.BLACK);
-        g.drawRect(0, 0,  gameWidth, gameHeight);
-
-        repaint();
+        g.drawRect(0, 0,  Main.gameWidth, Main.gameHeight);
     }
+
 }
