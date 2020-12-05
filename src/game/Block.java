@@ -1,12 +1,8 @@
 package game;
 
 import data.Conversion;
-import infrastructure.Main;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 public class Block {
     private final int[][] I_BLOCK = {{0, 0, 0, 0}, {1, 1, 1, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}};
@@ -17,7 +13,7 @@ public class Block {
     private final int[][] Z_BLOCK = {{1, 1, 0}, {0, 1, 1}, {0, 0, 0}};
     private final int[][] S_BLOCK = {{0, 1, 1}, {1, 1, 0}, {0, 0, 0}};
 
-    public int[][] block;
+    public int[][] map;
 
     private BlockType type;
     public Color color;
@@ -34,37 +30,37 @@ public class Block {
 
         switch (this.type) {
             case IBlock:
-                block = I_BLOCK;
+                map = I_BLOCK;
                 this.size = 4;
                 color = Color.CYAN;
                 break;
             case OBlock:
-                block = O_BLOCK;
+                map = O_BLOCK;
                 this.size = 2;
                 color = Color.YELLOW;
                 break;
             case TBlock:
-                block = T_BLOCK;
+                map = T_BLOCK;
                 this.size = 3;
                 color = Color.MAGENTA;
                 break;
             case LBlock:
-                block = L_BLOCK;
+                map = L_BLOCK;
                 this.size = 3;
                 color = Color.ORANGE;
                 break;
             case JBlock:
-                block = J_BLOCK;
+                map = J_BLOCK;
                 this.size = 3;
                 color = Color.BLUE;
                 break;
             case ZBlock:
-                block = Z_BLOCK;
+                map = Z_BLOCK;
                 this.size = 3;
                 color = Color.RED;
                 break;
             case SBlock:
-                block = S_BLOCK;
+                map = S_BLOCK;
                 this.size = 3;
                 color = Color.GREEN;
                 break;
@@ -73,9 +69,9 @@ public class Block {
     }
 
     public void drawBlock(Graphics g) {
-        for (int row = 0; row < block.length; row++) {
-            for (int col = 0; col < block[0].length; col++) {
-                if (block[row][col] == 1) {
+        for (int row = 0; row < map.length; row++) {
+            for (int col = 0; col < map[0].length; col++) {
+                if (map[row][col] == 1) {
                     g.setColor(color);
                     g.fillRect(col * cellSize + Conversion.intToCell(xPos),
                             row * cellSize + Conversion.intToCell(yPos), cellSize, cellSize);
@@ -84,15 +80,24 @@ public class Block {
         }
     }
 
-    public void rotate() {
-        int[][] tmpArray = new int[block.length][block.length];
-        for (int i = 0; i < block.length; i++) {
-            for (int j = 0; j < block.length; j++) {
-                tmpArray[i][j] = block[block.length - j - 1][i];
+    public int[][] rotate() {
+        int[][] rotatedMap = new int[map.length][map.length];
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map.length; j++) {
+                rotatedMap[i][j] = map[map.length - j - 1][i];
             }
         }
-        block = tmpArray;
+        return rotatedMap;
     }
+
+    public int getxPos() {
+        return xPos;
+    }
+
+    public int getyPos() {
+        return yPos;
+    }
+
     public int getCell_X(int x)
     {
         return xPos + x;

@@ -19,7 +19,9 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_SPACE){
-            Game.currentBlock.rotate();
+            if(Collision.canRotete(Game.currentBlock)) {
+                Game.currentBlock.map = Game.currentBlock.rotate();
+            }
         }
         if(e.getKeyCode() == KeyEvent.VK_D){
             if(Collision.canMoveRight(Game.currentBlock)){

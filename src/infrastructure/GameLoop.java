@@ -22,8 +22,7 @@ public class GameLoop extends Thread{
     public void run(){
         while(running){
             try {
-                if(Game.gameState == GameState.ingame){
-                    System.out.println("Ingame Loop");
+                if(Game.gameState == GameState.start){
                     Collision.checkBottomCollision(Game.currentBlock);
                     Game.currentBlock.moveDown();
 
@@ -36,7 +35,7 @@ public class GameLoop extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Running");
+            //System.out.println("Running");
         }
     }
 }
