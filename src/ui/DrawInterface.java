@@ -30,5 +30,6 @@ public class DrawInterface extends JPanel {
         g.setColor(Color.BLACK);
         g.drawRect(0, 0,  4 * Main.CELL_SIZE, 4 * Main.CELL_SIZE);
 
+        repaint();
     }
 }

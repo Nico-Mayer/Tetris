@@ -21,11 +21,6 @@ public class DrawGame extends JPanel {
         Game.currentBlock.drawBlock(g);
 
         drawGridLines(g);
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         repaint();
     }
 

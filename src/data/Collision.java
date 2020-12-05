@@ -1,6 +1,7 @@
 package data;
 
 import game.Block;
+import game.Game;
 import infrastructure.Main;
 
 public class Collision {
@@ -9,9 +10,10 @@ public class Collision {
     {
         for (int y = 0; y < block.map.length; y++) {
             for (int x = 0; x < block.map[0].length; x++) {
-                if (block.map[y][x] == 1 && block.getCell_Y(y) == Main.ROWS - 1) {
+                if (block.map[y][x] == 1 && block.getCell_Y(y) >= Main.ROWS - 1) {
                     System.out.println("Bottom Collision on x: "+ x + " y: "+ y);
                     block.setPos(0,0);
+                    Game.spawnNewBlock = true;
                 }
             }
         }

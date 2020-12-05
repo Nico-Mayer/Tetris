@@ -22,7 +22,13 @@ public class GameLoop extends Thread{
     public void run(){
         while(running){
             try {
-                if(Game.gameState == GameState.start){
+                if(Game.spawnNewBlock){
+                    Game.blocks.add(Game.nextBlock);
+                    Game.currentBlock = Game.nextBlock;
+                    Game.nextBlock = new Block(Main.CELL_SIZE);
+                    Game.spawnNewBlock = false;
+                }
+                if(Game.gameState == GameState.ingame){
                     Collision.checkBottomCollision(Game.currentBlock);
                     Game.currentBlock.moveDown();
 
@@ -35,7 +41,7 @@ public class GameLoop extends Thread{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //System.out.println("Running");
+            System.out.println("Running");
         }
     }
 }
