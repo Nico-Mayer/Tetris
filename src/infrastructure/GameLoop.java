@@ -25,6 +25,7 @@ public class GameLoop extends Thread{
                 if(Game.spawnNewBlock){
                     Game.blocks.add(Game.nextBlock);
                     Game.currentBlock = Game.nextBlock;
+                    Game.currentBlock.setPos(4,-3);
                     Game.nextBlock = new Block(Main.CELL_SIZE);
                     Game.spawnNewBlock = false;
                 }

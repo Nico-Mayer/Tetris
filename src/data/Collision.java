@@ -8,11 +8,11 @@ public class Collision {
 
     public static void checkBottomCollision(Block block)
     {
-        for (int y = 0; y < block.map.length; y++) {
-            for (int x = 0; x < block.map[0].length; x++) {
-                if (block.map[y][x] == 1 && block.getCell_Y(y) >= Main.ROWS - 1) {
+        for (int x = 0; x < block.map.length; x++) {
+            for (int y = 0; y < block.map[0].length; y++) {
+                if (block.map[x][y] == 1 && block.getCell_Y(y) >= Main.ROWS - 1) {
+                    Game.addBlockToMap(block);
                     System.out.println("Bottom Collision on x: "+ x + " y: "+ y);
-                    block.setPos(0,0);
                     Game.spawnNewBlock = true;
                 }
             }
