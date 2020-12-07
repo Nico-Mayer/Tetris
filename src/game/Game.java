@@ -30,8 +30,8 @@ public class Game {
     }
 
     public static void addBlockToMap(Block block){
-        for (int x = 0; x < block.map.length; x++) {
-            for (int y = 0; y < block.map[x].length; y++) {
+        for (int y = 0; y < block.map.length; y++) {
+            for (int x = 0; x < block.map.length; x++) {
                 if (block.map[y][x] == 1) {
                     map[block.getxPos() + x][block.getyPos() + y] = 1;
                 }
