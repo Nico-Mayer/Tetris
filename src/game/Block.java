@@ -15,7 +15,7 @@ public class Block {
 
     public int[][] map;
 
-    private BlockType type;
+    public BlockType type;
     public Color color;
     public int xPos = 0;
     private int yPos = 0;
@@ -47,7 +47,7 @@ public class Block {
             case LBlock:
                 map = L_BLOCK;
                 this.size = 3;
-                color = Color.ORANGE;
+                color = Color.PINK;
                 break;
             case JBlock:
                 map = J_BLOCK;

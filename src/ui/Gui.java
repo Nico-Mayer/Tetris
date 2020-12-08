@@ -4,6 +4,7 @@ import infrastructure.Main;
 import io.KeyHandler;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Gui extends JFrame{
     int guiWidth;
@@ -25,6 +26,7 @@ public class Gui extends JFrame{
         this.setLayout(null);
         this.setVisible(true);
         this.setSize(this.guiWidth, this.guiHeight);
+        this.getContentPane().setBackground(Color.darkGray);
 
     }
 

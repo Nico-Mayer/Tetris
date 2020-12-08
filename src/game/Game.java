@@ -33,7 +33,29 @@ public class Game {
         for (int y = 0; y < block.map.length; y++) {
             for (int x = 0; x < block.map.length; x++) {
                 if (block.map[y][x] == 1) {
-                    map[block.getxPos() + x][block.getyPos() + y] = 1;
+                    switch(block.type){
+                        case IBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 1;
+                            break;
+                        case JBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 2;
+                            break;
+                        case LBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 3;
+                            break;
+                        case OBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 4;
+                            break;
+                        case ZBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 5;
+                            break;
+                        case SBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 6;
+                            break;
+                        case TBlock:
+                            map[block.getxPos() + x][block.getyPos() + y] = 7;
+                            break;
+                    }
                 }
             }
         }

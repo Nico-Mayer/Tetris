@@ -18,6 +18,7 @@ public class DrawInterface extends JPanel {
         super.paintComponent(g);
         g.setColor(Game.nextBlock.getColor());
         Game.nextBlock.drawBlock(g);
+        this.setBackground(Color.darkGray);
 
         g.setColor(Color.LIGHT_GRAY);
 
@@ -27,7 +28,7 @@ public class DrawInterface extends JPanel {
                         Main.CELL_SIZE, Main.CELL_SIZE );
             }
         }
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawRect(0, 0,  4 * Main.CELL_SIZE, 4 * Main.CELL_SIZE);
 
         repaint();

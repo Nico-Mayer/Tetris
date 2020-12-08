@@ -22,6 +22,7 @@ public class DrawGame extends JPanel {
         g.setColor(Game.currentBlock.getColor());
         Game.currentBlock.drawBlock(g);
 
+        this.setBackground(Color.darkGray);
         drawGridLines(g);
         repaint();
     }
@@ -33,14 +34,43 @@ public class DrawGame extends JPanel {
                 g.drawRect(x * Main.CELL_SIZE, y * Main.CELL_SIZE, Main.CELL_SIZE, Main.CELL_SIZE );
             }
         }
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawRect(0, 0,  Main.gameWidth, Main.gameHeight);
     }
     private void drawMap(Graphics g){
         for (int x = 0; x < Game.map.length; x++) {
             for (int y = 0; y < Game.map[x].length; y++) {
-                if(Game.map[x][y] == 1){
-                    g.setColor(Color.RED);
+                if(Game.map[x][y] > 0){
+                    switch (Game.map[x][y]){
+                        // IBlock
+                        case 1:
+                            g.setColor(Color.CYAN);
+                            break;
+                        // JBlock
+                        case 2:
+                            g.setColor(Color.BLUE);
+                            break;
+                        // LBlock
+                        case 3:
+                            g.setColor(Color.PINK);
+                            break;
+                        // OBlock
+                        case 4:
+                            g.setColor(Color.YELLOW);
+                            break;
+                        // ZBlock
+                        case 5:
+                            g.setColor(Color.RED);
+                            break;
+                        // SBlock
+                        case 6:
+                            g.setColor(Color.GREEN);
+                            break;
+                        // TBlock
+                        case 7:
+                            g.setColor(Color.MAGENTA);
+                            break;
+                    }
                     g.fillRect(Conversion.intToCell(x),
                              Conversion.intToCell(y), Main.CELL_SIZE, Main.CELL_SIZE);
                 }
