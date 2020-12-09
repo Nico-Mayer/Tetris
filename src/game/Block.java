@@ -82,9 +82,9 @@ public class Block {
 
     public int[][] rotate() {
         int[][] rotatedMap = new int[map.length][map.length];
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map.length; j++) {
-                rotatedMap[i][j] = map[map.length - j - 1][i];
+        for (int row = 0; row < map.length; row++) {
+            for (int col = 0; col < map.length; col++) {
+                rotatedMap[row][col] = map[map.length - col - 1][row];
             }
         }
         return rotatedMap;
@@ -98,13 +98,13 @@ public class Block {
         return yPos;
     }
 
-    public int getCell_X(int x)
+    public int getCellColl(int cellCol)
     {
-        return xPos + x;
+        return xPos + cellCol;
     }
-    public int getCell_Y(int y)
+    public int getCellRow(int cellRow)
     {
-        return yPos + y;
+        return yPos + cellRow;
     }
 
     public Color getColor() {

@@ -8,7 +8,7 @@ public class Game {
     public static int score = 0, highscore = 0, scoreToAdd = 0;
     public static boolean spawnNewBlock = false, speedup = false;
     public static Block currentBlock, nextBlock;
-    public static int[][] map = new int[Main.COLUMS][Main.ROWS];
+    public static int[][] map = new int[Main.ROWS][Main.COLUMS];
     public static GameState gameState = GameState.start;
     public static ArrayList<Block> blocks = new ArrayList<Block>();
 
@@ -22,38 +22,38 @@ public class Game {
 
     public void initMap()
     {
-        for (int i = 0; i < Main.COLUMS; i++) {
-            for (int j = 0; j < Main.ROWS; j++) {
-                this.map[i][j] = 0;
+        for (int row = 0; row < Main.ROWS; row++) {
+            for (int col = 0; col < Main.COLUMS; col++) {
+                this.map[row][col] = 0;
             }
         }
     }
 
     public static void addBlockToMap(Block block){
-        for (int y = 0; y < block.map.length; y++) {
-            for (int x = 0; x < block.map.length; x++) {
-                if (block.map[y][x] == 1) {
+        for (int row = 0; row < block.map.length; row++) {
+            for (int col = 0; col < block.map.length; col++) {
+                if (block.map[row][col] == 1) {
                     switch(block.type){
                         case IBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 1;
+                            map[block.getyPos() + row][block.getxPos() + col] = 1;
                             break;
                         case JBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 2;
+                            map[block.getyPos() + row][block.getxPos() + col] = 2;
                             break;
                         case LBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 3;
+                            map[block.getyPos() + row][block.getxPos() + col] = 3;
                             break;
                         case OBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 4;
+                            map[block.getyPos() + row][block.getxPos() + col] = 4;
                             break;
                         case ZBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 5;
+                            map[block.getyPos() + row][block.getxPos() + col] = 5;
                             break;
                         case SBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 6;
+                            map[block.getyPos() + row][block.getxPos() + col] = 6;
                             break;
                         case TBlock:
-                            map[block.getxPos() + x][block.getyPos() + y] = 7;
+                            map[block.getyPos() + row][block.getxPos() + col] = 7;
                             break;
                     }
                 }

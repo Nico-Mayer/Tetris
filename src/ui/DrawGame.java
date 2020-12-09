@@ -38,10 +38,10 @@ public class DrawGame extends JPanel {
         g.drawRect(0, 0,  Main.gameWidth, Main.gameHeight);
     }
     private void drawMap(Graphics g){
-        for (int x = 0; x < Game.map.length; x++) {
-            for (int y = 0; y < Game.map[x].length; y++) {
-                if(Game.map[x][y] > 0){
-                    switch (Game.map[x][y]){
+        for (int row = 0; row < Game.map.length; row++) {
+            for (int col = 0; col < Game.map[row].length; col++) {
+                if(Game.map[row][col] > 0){
+                    switch (Game.map[row][col]){
                         // IBlock
                         case 1:
                             g.setColor(Color.CYAN);
@@ -71,8 +71,8 @@ public class DrawGame extends JPanel {
                             g.setColor(Color.MAGENTA);
                             break;
                     }
-                    g.fillRect(Conversion.intToCell(x),
-                             Conversion.intToCell(y), Main.CELL_SIZE, Main.CELL_SIZE);
+                    g.fillRect(Conversion.intToCell(col),
+                             Conversion.intToCell(row), Main.CELL_SIZE, Main.CELL_SIZE);
                 }
             }
         }
